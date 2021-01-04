@@ -1,0 +1,13 @@
+[package]
+name = "seshat4c"
+version = "0.0.11"
+authors = ["Yujeonja <hardboiled65@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+seshat-unicode = "0.0.11"
