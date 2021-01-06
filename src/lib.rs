@@ -1,6 +1,9 @@
 use std::ffi::CStr;
 use std::os::raw::c_char;
 
+pub mod char;
+// pub use crate::char;
+
 #[repr(C)]
 pub struct sh_string {
     content: String,
@@ -25,6 +28,12 @@ pub fn sh_string_new(c_str: *const c_char) -> *mut sh_string {
 }
 
 #[no_mangle]
+pub fn sh_string_free(string: *mut sh_string) {
+    let boxed = unsafe { Box::from_raw(string) };
+    Box::into_raw(boxed);
+}
+
+#[no_mangle]
 pub fn sh_string_len(string: *mut sh_string) -> usize {
     let boxed = unsafe { Box::from_raw(string) };
     let size: usize = boxed.content.len();
@@ -44,11 +53,21 @@ pub fn sh_string_print(string: *mut sh_string) {
 mod tests {
     use std::ffi::CStr;
 
+    use super::sh_string_new;
+    use super::sh_string_free;
+
     #[test]
     fn it_works() {
         let c_str = CStr::from_bytes_with_nul(b"hello\0").expect("asdf");
-        let s = super::sh_string_new(c_str);
+        let s = super::sh_string_new(c_str.as_ptr());
         super::sh_string_print(s);
         super::sh_string_print(s);
+    }
+
+    #[test]
+    fn test_free() {
+        let c_str = CStr::from_bytes_with_nul(b"Hi!\0").expect("error");
+        let sh_str = sh_string_new(c_str.as_ptr());
+        sh_string_free(sh_str);
     }
 }
