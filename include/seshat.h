@@ -10,6 +10,9 @@
 #ifndef _SESHAT_H
 #define _SESHAT_H
 
+#include "seshat/char.h"
+#include "seshat/props.h"
+
 typedef struct sh_string {
     void *content;
 } sh_string;

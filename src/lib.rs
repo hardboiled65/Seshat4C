@@ -3,6 +3,7 @@ use std::os::raw::c_char;
 
 pub mod char;
 // pub use crate::char;
+pub mod ucd;
 
 #[repr(C)]
 pub struct sh_string {

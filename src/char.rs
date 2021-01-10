@@ -15,6 +15,13 @@ pub fn sh_char_new(c_str: *const c_char) -> sh_char
     ch
 }
 
+pub fn sh_char_to_rust_char(ch: &sh_char) -> char {
+    match std::char::from_u32(ch.cp) {
+        Some(val) => val,
+        None => '\u{0000}',
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use std::ffi::CStr;
