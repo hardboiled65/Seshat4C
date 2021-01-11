@@ -10,6 +10,10 @@
 #ifndef _SESHAT_PROPS_H
 #define _SESHAT_PROPS_H
 
+typedef struct sh_property_name {
+    void *names;
+} sh_property_name;
+
 enum Gc {
     // C - Other
     Cc,
