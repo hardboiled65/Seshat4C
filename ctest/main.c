@@ -1,7 +1,16 @@
 #include <assert.h>
 #include <stddef.h>
 
+#include <stdio.h>
+
 #include <seshat.h>
+
+void test_char_as_uint32_t()
+{
+    sh_char ch = sh_char_new("A");
+    uint32_t u32 = sh_char_as_uint32_t(ch);
+    assert(u32 == 0x41);
+}
 
 void test_string_len()
 {
@@ -22,6 +31,8 @@ void test_string_print()
 
 int main()
 {
+    test_char_as_uint32_t();
+
     test_string_len();
 
     test_string_print();

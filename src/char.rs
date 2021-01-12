@@ -31,6 +31,11 @@ pub fn sh_char_new(c_str: *const c_char) -> sh_char
     ch
 }
 
+#[no_mangle]
+pub fn sh_char_as_uint32_t(ch: sh_char) -> u32 {
+    ch.cp as u32
+}
+
 pub fn sh_char_to_rust_char(ch: &sh_char) -> char {
     match std::char::from_u32(ch.cp) {
         Some(val) => val,
