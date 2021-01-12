@@ -1,3 +1,4 @@
+use std::ffi::CStr;
 use std::os::raw::c_char;
 
 #[repr(C)]
@@ -8,8 +9,23 @@ pub struct sh_char {
 #[no_mangle]
 pub fn sh_char_new(c_str: *const c_char) -> sh_char
 {
-    let mut ch = sh_char {
-        cp: 0,
+    let rust_cstr = unsafe { CStr::from_ptr(c_str) };
+    let rust_str = rust_cstr.to_str();
+    let rust_str = match rust_str {
+        Ok(valid) => valid,
+        Err(_) => "Utf8Err",
+    };
+    // Get chars.
+    let mut chars = rust_str.chars();
+    // Get first char or error.
+    let iter = chars.next();
+    let mut ch = '\0';
+    match iter {
+        Some(chr) => { ch = chr; },
+        None => {},
+    }
+    let ch = sh_char {
+        cp: ch as u32,
     };
 
     ch
@@ -31,5 +47,7 @@ mod tests {
     fn test_char_new() {
         let c_str = CStr::from_bytes_with_nul(b"H\0").expect("error");
         let ch = sh_char_new(c_str.as_ptr());
+        let rust_char = super::sh_char_to_rust_char(&ch);
+        assert_eq!(rust_char, 'H');
     }
 }
