@@ -7,14 +7,14 @@
 //
 //  Unicode properties.
 */
-#ifndef _SESHAT_PROPS_H
-#define _SESHAT_PROPS_H
+#ifndef _SESHAT_UNICODE_PROPS_H
+#define _SESHAT_UNICODE_PROPS_H
 
 typedef struct sh_property_name {
     void *names;
 } sh_property_name;
 
-enum Gc {
+typedef enum Gc {
     // C - Other
     Cc,
     Cf,
@@ -53,6 +53,6 @@ enum Gc {
     Zl,
     Zp,
     Zs,
-};
+} Gc;
 
-#endif /* _SESHAT_PROPS_H */
+#endif /* _SESHAT_UNICODE_PROPS_H */

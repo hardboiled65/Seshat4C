@@ -12,6 +12,6 @@
 
 #include "seshat/char.h"
 #include "seshat/string.h"
-#include "seshat/props.h"
+#include "seshat/unicode.h"
 
 #endif /* _SESHAT_H */

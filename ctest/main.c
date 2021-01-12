@@ -39,6 +39,16 @@ void test_string_print()
     sh_string_free(string);
 }
 
+// Unicode tests.
+
+void test_unicode_gc()
+{
+    sh_char ch = sh_char_new("A");
+    Gc gc = sh_char_gc(ch);
+    printf("%d\n", gc);
+    assert(gc == Lu);
+}
+
 int main()
 {
     test_char_as_uint32_t();
@@ -48,6 +58,10 @@ int main()
     test_string_len();
 
     test_string_print();
+
+    // Unicode tests.
+
+    test_unicode_gc();
 
     return 0;
 }

@@ -1,8 +1,12 @@
+use std::ffi::CString;
+
 use seshat::unicode::props::*;
 use seshat::unicode::Ucd;
 
 // pub mod char;
 use super::char::*;
+use super::string::sh_string;
+use super::string::sh_string_new;
 use super::*;
 
 #[repr(C)]
@@ -11,15 +15,27 @@ pub struct sh_property_name {
 }
 
 #[no_mangle]
-pub fn sh_property_name_full(property_name: sh_property_name) {
+pub fn sh_property_name_full(property_name: sh_property_name) -> *mut sh_string {
     println!("sh_property_name_full temporary --- ");
     println!("{:?}", property_name.names.full.as_bytes());
+
+    let string = CString::new(property_name.names.full.as_bytes());
+    let string = match string {
+        Ok(valid) => valid,
+        Err(e) => {
+            println!("{:?}", e);
+            panic!();
+        }
+    };
+
+    let property_name = sh_string_new(string.into_raw());
+
+    property_name
 }
 
 #[no_mangle]
-pub fn sh_char_gc(ch: &sh_char) -> Gc {
-    // let cp = std::char::from_u32(ch.cp);
-    let ch = sh_char_to_rust_char(ch);
+pub fn sh_char_gc(ch: sh_char) -> Gc {
+    let ch = sh_char_to_rust_char(&ch);
 
     ch.gc()
 }
