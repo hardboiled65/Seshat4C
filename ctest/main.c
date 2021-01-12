@@ -12,6 +12,16 @@ void test_char_as_uint32_t()
     assert(u32 == 0x41);
 }
 
+void test_string_insert()
+{
+    sh_string *string = sh_string_new("insert tes");
+    sh_char ch = sh_char_new("t");
+    sh_string_insert(string, 10, ch);
+    sh_string_print(string);
+
+    sh_string_free(string);
+}
+
 void test_string_len()
 {
     sh_string *string = sh_string_new("Hello");
@@ -32,6 +42,8 @@ void test_string_print()
 int main()
 {
     test_char_as_uint32_t();
+
+    test_string_insert();
 
     test_string_len();
 

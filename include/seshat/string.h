@@ -12,11 +12,15 @@
 
 #include <stddef.h>
 
+#include "char.h"
+
 typedef struct sh_string {
     void *content;
 } sh_string;
 
 sh_string* sh_string_new(const char*);
+
+void sh_string_insert(sh_string *string, size_t idx, sh_char ch);
 
 size_t sh_string_len(sh_string *string);
 
