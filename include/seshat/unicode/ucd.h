@@ -16,8 +16,13 @@
 
 sh_string* sh_property_name_full(sh_property_name property_name);
 
-Gc sh_char_gc(sh_char ch);
+sh_string* sh_property_name_abbr(sh_property_name property_name);
 
-sh_property_name gc_property_name(Gc gc);
+SH_Gc sh_char_gc(sh_char ch);
+
+sh_property_name sh_gc_property_value_name(SH_Gc gc);
+
+
+void sh_gc_debug(SH_Gc gc);
 
 #endif /* _SESHAT_UNICODE_UCD_H */
