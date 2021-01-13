@@ -1,22 +1,11 @@
-/*
-//  props.h
-//
-//  Author:     Yujeonja
-//  Created:    2021. 01. 06. 16:02
-//  Copyright (c) 2021 Yujeonja. All rights reserved.
-//
-//  Unicode properties.
-*/
-#ifndef _SESHAT_UNICODE_PROPS_H
-#define _SESHAT_UNICODE_PROPS_H
+use seshat::unicode::props::*;
 
-typedef struct sh_property_name {
-    void *names;
-} sh_property_name;
-
-typedef enum SH_Gc {
+#[allow(non_camel_case_types)]
+#[derive(FromPrimitive)]
+#[repr(C)]
+pub enum SH_Gc {
     // C - Other
-    SH_Cc,
+    SH_Cc = Gc::Cc as isize,
     SH_Cf,
     SH_Cn,
     SH_Co,
@@ -53,6 +42,4 @@ typedef enum SH_Gc {
     SH_Zl,
     SH_Zp,
     SH_Zs,
-} SH_Gc;
-
-#endif /* _SESHAT_UNICODE_PROPS_H */
+}

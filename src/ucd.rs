@@ -3,11 +3,10 @@ use std::ffi::CString;
 use seshat::unicode::props::*;
 use seshat::unicode::Ucd;
 
-// pub mod char;
 use super::char::*;
 use super::string::sh_string;
 use super::string::sh_string_new;
-use super::*;
+use crate::props::*;
 
 #[repr(C)]
 pub struct sh_property_name {
@@ -34,14 +33,15 @@ pub fn sh_property_name_full(property_name: sh_property_name) -> *mut sh_string 
 }
 
 #[no_mangle]
-pub fn sh_char_gc(ch: sh_char) -> Gc {
+pub fn sh_char_gc(ch: sh_char) -> u8 {
     let ch = sh_char_to_rust_char(&ch);
 
-    ch.gc()
+    ch.gc() as u8
 }
 
 #[no_mangle]
-pub fn sh_gc_name(gc: Gc) -> sh_property_name {
+pub fn sh_gc_name(gc: SH_Gc) -> sh_property_name {
+    let seshat_gc = Gc::from(gc as u8);
     let name = sh_property_name {
         names: gc.property_value_name(),
     };
@@ -53,7 +53,7 @@ pub fn sh_gc_name(gc: Gc) -> sh_property_name {
 mod tests {
     use std::ffi::CStr;
 
-    use super::char::*;
+    use crate::char::*;
     use super::sh_property_name_full;
     use super::sh_char_gc;
     use super::sh_gc_name;
@@ -64,7 +64,7 @@ mod tests {
         let ch = sh_char_new(c_str.as_ptr());
 
         // Get Gc property.
-        let gc = sh_char_gc(&ch);
+        let gc = sh_char_gc(ch);
 
         // Get Gc property name.
         let property_name = sh_gc_name(gc);
