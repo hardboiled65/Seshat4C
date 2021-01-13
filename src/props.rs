@@ -1,7 +1,6 @@
 use seshat::unicode::props::*;
 
 #[allow(non_camel_case_types)]
-#[derive(FromPrimitive)]
 #[repr(C)]
 pub enum SH_Gc {
     // C - Other
