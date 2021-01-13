@@ -74,6 +74,9 @@ void test_unicode_gc_name()
     printf("Abbr: ");
     sh_string_print(abbr);
 
+    sh_string_free(full);
+    sh_string_free(abbr);
+
     printf("test_unicode_gc_name end\n");
     printf("========================\n");
 }

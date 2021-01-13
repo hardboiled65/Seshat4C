@@ -10,14 +10,13 @@ use crate::props::*;
 
 #[repr(C)]
 pub struct sh_property_name {
-    names: *const PropertyName,
+    names: Box<PropertyName>,
 }
 
 #[no_mangle]
 pub fn sh_property_name_full(property_name: sh_property_name) -> *mut sh_string {
-    let string = unsafe {
-        CString::new((*property_name.names).full.as_bytes())
-    };
+    let names: PropertyName = *property_name.names;
+    let string = CString::new(names.full.as_bytes());
     let string = match string {
         Ok(valid) => valid,
         Err(e) => {
@@ -26,6 +25,8 @@ pub fn sh_property_name_full(property_name: sh_property_name) -> *mut sh_string 
         }
     };
 
+    Box::into_raw(property_name.names);
+
     let property_name = sh_string_new(string.into_raw());
 
     property_name
@@ -33,15 +34,16 @@ pub fn sh_property_name_full(property_name: sh_property_name) -> *mut sh_string 
 
 #[no_mangle]
 pub fn sh_property_name_abbr(property_name: sh_property_name) -> *mut sh_string {
-    let string = unsafe {
-        CString::new((*property_name.names).abbr.as_bytes())
-    };
+    let names: PropertyName = *property_name.names;
+    let string = CString::new(names.abbr.as_bytes());
     let string = match string {
         Ok(valid) => valid,
         Err(e) => {
             panic!("{:?}", e);
         }
     };
+
+    Box::into_raw(property_name.names);
 
     let name = sh_string_new(string.into_raw());
 
@@ -59,7 +61,7 @@ pub fn sh_char_gc(ch: sh_char) -> isize {
 pub fn sh_gc_property_value_name(gc: SH_Gc) -> sh_property_name {
     let seshat_gc = convert_sh_gc_to_gc(gc);
     let name = sh_property_name {
-        names: &seshat_gc.property_value_name(),
+        names: Box::new(seshat_gc.property_value_name()),
     };
 
     name
