@@ -22,6 +22,8 @@ SH_Gc sh_char_gc(sh_char ch);
 
 sh_property_name sh_gc_property_value_name(SH_Gc gc);
 
+sh_string* sh_char_na(sh_char ch);
+
 
 void sh_gc_debug(SH_Gc gc);
 

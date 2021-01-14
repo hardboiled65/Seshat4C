@@ -68,6 +68,22 @@ pub fn sh_gc_property_value_name(gc: SH_Gc) -> sh_property_name {
 }
 
 #[no_mangle]
+pub fn sh_char_na(ch: sh_char) -> *mut sh_string {
+    let ch = sh_char_to_rust_char(&ch);
+    let na = ch.na();
+
+    let cstring_na = CString::new(na.as_bytes());
+    let cstring_na = match cstring_na {
+        Ok(val) => val,
+        Err(e) => panic!("{:?}", e),
+    };
+
+    let string = sh_string_new(cstring_na.into_raw());
+
+    string
+}
+
+#[no_mangle]
 pub fn sh_gc_debug(gc: SH_Gc) {
     println!("Gc: {:?}", gc);
 }

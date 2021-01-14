@@ -81,6 +81,15 @@ void test_unicode_gc_name()
     printf("========================\n");
 }
 
+void test_unicode_na()
+{
+    sh_char ch = sh_char_new("가");
+    sh_string *na = sh_char_na(ch);
+    sh_string_print(na);
+
+    sh_string_free(na);
+}
+
 int main()
 {
     test_char_as_uint32_t();
@@ -98,6 +107,8 @@ int main()
     test_unicode_gc_debug();
 
     test_unicode_gc_name();
+
+    test_unicode_na();
 
     return 0;
 }
