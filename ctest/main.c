@@ -45,7 +45,7 @@ void test_unicode_gc()
 {
     sh_char ch = sh_char_new("A");
     SH_Gc gc = sh_char_gc(ch);
-    assert(gc == SH_Lu);
+    assert(gc == SH_Gc_Lu);
 }
 
 void test_unicode_gc_debug()
