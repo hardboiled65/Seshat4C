@@ -20,8 +20,7 @@ pub extern "C" fn sh_property_name_full(property_name: sh_property_name) -> *mut
     let string = match string {
         Ok(valid) => valid,
         Err(e) => {
-            println!("{:?}", e);
-            panic!();
+            panic!("{:?}", e);
         }
     };
 
