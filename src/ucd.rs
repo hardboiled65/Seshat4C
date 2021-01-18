@@ -14,7 +14,7 @@ pub struct sh_property_name {
 }
 
 #[no_mangle]
-pub fn sh_property_name_full(property_name: sh_property_name) -> *mut sh_string {
+pub extern "C" fn sh_property_name_full(property_name: sh_property_name) -> *mut sh_string {
     let names: PropertyName = *property_name.names;
     let string = CString::new(names.full.as_bytes());
     let string = match string {
@@ -33,7 +33,7 @@ pub fn sh_property_name_full(property_name: sh_property_name) -> *mut sh_string 
 }
 
 #[no_mangle]
-pub fn sh_property_name_abbr(property_name: sh_property_name) -> *mut sh_string {
+pub extern "C" fn sh_property_name_abbr(property_name: sh_property_name) -> *mut sh_string {
     let names: PropertyName = *property_name.names;
     let string = CString::new(names.abbr.as_bytes());
     let string = match string {
@@ -51,14 +51,14 @@ pub fn sh_property_name_abbr(property_name: sh_property_name) -> *mut sh_string 
 }
 
 #[no_mangle]
-pub fn sh_char_gc(ch: sh_char) -> isize {
+pub extern "C" fn sh_char_gc(ch: sh_char) -> isize {
     let ch = sh_char_to_rust_char(&ch);
 
     ch.gc() as isize
 }
 
 #[no_mangle]
-pub fn sh_gc_property_value_name(gc: SH_Gc) -> sh_property_name {
+pub extern "C" fn sh_gc_property_value_name(gc: SH_Gc) -> sh_property_name {
     let seshat_gc = convert_sh_gc_to_gc(gc);
     let name = sh_property_name {
         names: Box::new(seshat_gc.property_value_name()),
@@ -68,7 +68,7 @@ pub fn sh_gc_property_value_name(gc: SH_Gc) -> sh_property_name {
 }
 
 #[no_mangle]
-pub fn sh_char_na(ch: sh_char) -> *mut sh_string {
+pub extern "C" fn sh_char_na(ch: sh_char) -> *mut sh_string {
     let ch = sh_char_to_rust_char(&ch);
     let na = ch.na();
 
@@ -84,7 +84,7 @@ pub fn sh_char_na(ch: sh_char) -> *mut sh_string {
 }
 
 #[no_mangle]
-pub fn sh_gc_debug(gc: SH_Gc) {
+pub extern "C" fn sh_gc_debug(gc: SH_Gc) {
     println!("Gc: {:?}", gc);
 }
 
