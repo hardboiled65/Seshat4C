@@ -67,11 +67,11 @@ void test_unicode_gc_name()
     sh_property_name property_name = sh_gc_property_value_name(gc);
 
     sh_string *full = sh_property_name_full(property_name);
-    printf("Full: ");
+    printf("Full: "); fflush(stdout);
     sh_string_print(full);
 
     sh_string *abbr = sh_property_name_abbr(property_name);
-    printf("Abbr: ");
+    printf("Abbr: "); fflush(stdout);
     sh_string_print(abbr);
 
     sh_string_free(full);
@@ -79,6 +79,36 @@ void test_unicode_gc_name()
 
     printf("test_unicode_gc_name end\n");
     printf("========================\n");
+}
+
+void test_unicode_hst()
+{
+    sh_char ch = sh_char_new("ᄀ");
+    SH_Hst hst = sh_char_hst(ch);
+    assert(hst == SH_Hst_L);
+}
+
+void test_unicode_hst_name()
+{
+    printf("test_unicode_hst_name begin\n");
+    sh_char ch = sh_char_new("ᄀ");
+    SH_Hst hst = sh_char_hst(ch);
+
+    sh_property_name property_name = sh_hst_property_value_name(hst);
+
+    sh_string *full = sh_property_name_full(property_name);
+    printf("Full: "); fflush(stdout);
+    sh_string_print(full);
+
+    sh_string *abbr = sh_property_name_abbr(property_name);
+    printf("Abbr: "); fflush(stdout);
+    sh_string_print(abbr);
+
+    sh_string_free(full);
+    sh_string_free(abbr);
+
+    printf("test_unicode_hst_name end\n");
+    printf("=========================\n");
 }
 
 void test_unicode_na()
@@ -107,6 +137,10 @@ int main()
     test_unicode_gc_debug();
 
     test_unicode_gc_name();
+
+    test_unicode_hst();
+
+    test_unicode_hst_name();
 
     test_unicode_na();
 

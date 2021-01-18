@@ -55,4 +55,13 @@ typedef enum SH_Gc {
     SH_Gc_Zs,
 } SH_Gc;
 
+typedef enum SH_Hst {
+    SH_Hst_L,      //Leading_Jamo
+    SH_Hst_LV,     //LV_Syllable
+    SH_Hst_LVT,    //LVT_Syllable
+    SH_Hst_NA,     //Not_Applicable
+    SH_Hst_T,      //Trailing_Jamo
+    SH_Hst_V,      //Vowel_Jamo
+} SH_Hst;
+
 #endif /* _SESHAT_UNICODE_PROPS_H */

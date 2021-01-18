@@ -67,6 +67,23 @@ pub extern "C" fn sh_gc_property_value_name(gc: SH_Gc) -> sh_property_name {
 }
 
 #[no_mangle]
+pub extern "C" fn sh_char_hst(ch: sh_char) -> isize {
+    let ch = sh_char_to_rust_char(&ch);
+
+    ch.hst() as isize
+}
+
+#[no_mangle]
+pub extern "C" fn sh_hst_property_value_name(hst: SH_Hst) -> sh_property_name {
+    let seshat_hst = convert_sh_hst_to_hst(hst);
+    let name = sh_property_name {
+        names: Box::new(seshat_hst.property_value_name()),
+    };
+
+    name
+}
+
+#[no_mangle]
 pub extern "C" fn sh_char_na(ch: sh_char) -> *mut sh_string {
     let ch = sh_char_to_rust_char(&ch);
     let na = ch.na();

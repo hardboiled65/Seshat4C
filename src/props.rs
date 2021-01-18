@@ -78,3 +78,26 @@ pub fn convert_sh_gc_to_gc(gc: SH_Gc) -> Gc {
         SH_Gc::SH_Gc_Zs => Gc::Zs,
     }
 }
+
+#[allow(non_camel_case_types)]
+#[derive(Debug, Clone)]
+#[repr(C)]
+pub enum SH_Hst {
+    SH_Hst_L,      //Leading_Jamo
+    SH_Hst_LV,     //LV_Syllable
+    SH_Hst_LVT,    //LVT_Syllable
+    SH_Hst_NA,     //Not_Applicable
+    SH_Hst_T,      //Trailing_Jamo
+    SH_Hst_V,      //Vowel_Jamo
+}
+
+pub fn convert_sh_hst_to_hst(hst: SH_Hst) -> Hst {
+    match hst {
+        SH_Hst::SH_Hst_L => Hst::L,
+        SH_Hst::SH_Hst_LV => Hst::LV,
+        SH_Hst::SH_Hst_LVT => Hst::LVT,
+        SH_Hst::SH_Hst_NA => Hst::NA,
+        SH_Hst::SH_Hst_T => Hst::T,
+        SH_Hst::SH_Hst_V => Hst::V,
+    }
+}
