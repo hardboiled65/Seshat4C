@@ -7,7 +7,7 @@ pub struct sh_char {
 }
 
 #[no_mangle]
-pub fn sh_char_new(c_str: *const c_char) -> sh_char
+pub extern "C" fn sh_char_new(c_str: *const c_char) -> sh_char
 {
     let rust_cstr = unsafe { CStr::from_ptr(c_str) };
     let rust_str = rust_cstr.to_str();
@@ -32,7 +32,7 @@ pub fn sh_char_new(c_str: *const c_char) -> sh_char
 }
 
 #[no_mangle]
-pub fn sh_char_as_uint32_t(ch: sh_char) -> u32 {
+pub extern "C" fn sh_char_as_uint32_t(ch: sh_char) -> u32 {
     ch.cp as u32
 }
 

@@ -22,6 +22,10 @@ SH_Gc sh_char_gc(sh_char ch);
 
 sh_property_name sh_gc_property_value_name(SH_Gc gc);
 
+SH_Hst sh_char_hst(sh_char ch);
+
+sh_property_name sh_hst_property_value_name(SH_Hst hst);
+
 sh_string* sh_char_na(sh_char ch);
 
 

@@ -9,7 +9,7 @@ pub struct sh_string {
 }
 
 #[no_mangle]
-pub fn sh_string_new(c_str: *const c_char) -> *mut sh_string {
+pub extern "C" fn sh_string_new(c_str: *const c_char) -> *mut sh_string {
     let rust_cstr = unsafe { CStr::from_ptr(c_str) };
     let rust_str = rust_cstr.to_str();
     let rust_str = match rust_str {
@@ -28,20 +28,20 @@ pub fn sh_string_new(c_str: *const c_char) -> *mut sh_string {
 }
 
 #[no_mangle]
-pub fn sh_string_free(string: *mut sh_string) {
+pub extern "C" fn sh_string_free(string: *mut sh_string) {
     let boxed = unsafe { Box::from_raw(string) };
     Box::into_raw(boxed);
 }
 
 #[no_mangle]
-pub fn sh_string_insert(string: *mut sh_string, idx: usize, ch: sh_char) {
+pub extern "C" fn sh_string_insert(string: *mut sh_string, idx: usize, ch: sh_char) {
     let mut boxed = unsafe { Box::from_raw(string) };
     boxed.content.insert(idx, sh_char_to_rust_char(&ch));
     Box::into_raw(boxed);
 }
 
 #[no_mangle]
-pub fn sh_string_len(string: *mut sh_string) -> usize {
+pub extern "C" fn sh_string_len(string: *mut sh_string) -> usize {
     let boxed = unsafe { Box::from_raw(string) };
     let size: usize = boxed.content.len();
     Box::into_raw(boxed);
@@ -50,7 +50,7 @@ pub fn sh_string_len(string: *mut sh_string) -> usize {
 }
 
 #[no_mangle]
-pub fn sh_string_print(string: *mut sh_string) {
+pub extern "C" fn sh_string_print(string: *mut sh_string) {
     let boxed = unsafe { Box::from_raw(string) };
     println!("{}", boxed.content);
     Box::into_raw(boxed);
