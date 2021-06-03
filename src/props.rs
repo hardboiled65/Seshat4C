@@ -3,101 +3,101 @@ use seshat::unicode::props::*;
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone)]
 #[repr(C)]
-pub enum SH_Gc {
+pub enum sh_gc {
     // C - Other
-    SH_Gc_Cc = Gc::Cc as isize,
-    SH_Gc_Cf,
-    SH_Gc_Cn,
-    SH_Gc_Co,
-    SH_Gc_Cs,
+    SH_GC_CC = Gc::Cc as isize,
+    SH_GC_CF,
+    SH_GC_CN,
+    SH_GC_CO,
+    SH_GC_CS,
     // L - Letter
     // LC - Cased_Letter (Ll | Lt | Lu)
-    SH_Gc_Ll,
-    SH_Gc_Lm,
-    SH_Gc_Lo,
-    SH_Gc_Lt,
-    SH_Gc_Lu,
+    SH_GC_LL,
+    SH_GC_LM,
+    SH_GC_LO,
+    SH_GC_LT,
+    SH_GC_LU,
     // M - Mark
-    SH_Gc_Mc,
-    SH_Gc_Me,
-    SH_Gc_Mn,
+    SH_GC_MC,
+    SH_GC_ME,
+    SH_GC_MN,
     // N - Number
-    SH_Gc_Nd,
-    SH_Gc_Nl,
-    SH_Gc_No,
+    SH_GC_ND,
+    SH_GC_NL,
+    SH_GC_NO,
     // P - Punctuation
-    SH_Gc_Pc,
-    SH_Gc_Pd,
-    SH_Gc_Pe,
-    SH_Gc_Pf,
-    SH_Gc_Pi,
-    SH_Gc_Po,
-    SH_Gc_Ps,
+    SH_GC_PC,
+    SH_GC_PD,
+    SH_GC_PE,
+    SH_GC_PF,
+    SH_GC_PI,
+    SH_GC_PO,
+    SH_GC_PS,
     // S - Symbol
-    SH_Gc_Sc,
-    SH_Gc_Sk,
-    SH_Gc_Sm,
-    SH_Gc_So,
+    SH_GC_SC,
+    SH_GC_SK,
+    SH_GC_SM,
+    SH_GC_SO,
     // Z - Separator
-    SH_Gc_Zl,
-    SH_Gc_Zp,
-    SH_Gc_Zs,
+    SH_GC_ZL,
+    SH_GC_ZP,
+    SH_GC_ZS,
 }
 
-pub fn convert_sh_gc_to_gc(gc: SH_Gc) -> Gc {
+pub fn convert_sh_gc_to_gc(gc: sh_gc) -> Gc {
     match gc {
-        SH_Gc::SH_Gc_Cc => Gc::Cc,
-        SH_Gc::SH_Gc_Cf => Gc::Cf,
-        SH_Gc::SH_Gc_Cn => Gc::Cn,
-        SH_Gc::SH_Gc_Co => Gc::Co,
-        SH_Gc::SH_Gc_Cs => Gc::Cs,
-        SH_Gc::SH_Gc_Ll => Gc::Ll,
-        SH_Gc::SH_Gc_Lm => Gc::Lm,
-        SH_Gc::SH_Gc_Lo => Gc::Lo,
-        SH_Gc::SH_Gc_Lt => Gc::Lt,
-        SH_Gc::SH_Gc_Lu => Gc::Lu,
-        SH_Gc::SH_Gc_Mc => Gc::Mc,
-        SH_Gc::SH_Gc_Me => Gc::Me,
-        SH_Gc::SH_Gc_Mn => Gc::Mn,
-        SH_Gc::SH_Gc_Nd => Gc::Nd,
-        SH_Gc::SH_Gc_Nl => Gc::Nl,
-        SH_Gc::SH_Gc_No => Gc::No,
-        SH_Gc::SH_Gc_Pc => Gc::Pc,
-        SH_Gc::SH_Gc_Pd => Gc::Pd,
-        SH_Gc::SH_Gc_Pe => Gc::Pe,
-        SH_Gc::SH_Gc_Pf => Gc::Pf,
-        SH_Gc::SH_Gc_Pi => Gc::Pi,
-        SH_Gc::SH_Gc_Po => Gc::Po,
-        SH_Gc::SH_Gc_Ps => Gc::Ps,
-        SH_Gc::SH_Gc_Sc => Gc::Sc,
-        SH_Gc::SH_Gc_Sk => Gc::Sk,
-        SH_Gc::SH_Gc_Sm => Gc::Sm,
-        SH_Gc::SH_Gc_So => Gc::So,
-        SH_Gc::SH_Gc_Zl => Gc::Zl,
-        SH_Gc::SH_Gc_Zp => Gc::Zp,
-        SH_Gc::SH_Gc_Zs => Gc::Zs,
+        sh_gc::SH_GC_CC => Gc::Cc,
+        sh_gc::SH_GC_CF => Gc::Cf,
+        sh_gc::SH_GC_CN => Gc::Cn,
+        sh_gc::SH_GC_CO => Gc::Co,
+        sh_gc::SH_GC_CS => Gc::Cs,
+        sh_gc::SH_GC_LL => Gc::Ll,
+        sh_gc::SH_GC_LM => Gc::Lm,
+        sh_gc::SH_GC_LO => Gc::Lo,
+        sh_gc::SH_GC_LT => Gc::Lt,
+        sh_gc::SH_GC_LU => Gc::Lu,
+        sh_gc::SH_GC_MC => Gc::Mc,
+        sh_gc::SH_GC_ME => Gc::Me,
+        sh_gc::SH_GC_MN => Gc::Mn,
+        sh_gc::SH_GC_ND => Gc::Nd,
+        sh_gc::SH_GC_NL => Gc::Nl,
+        sh_gc::SH_GC_NO => Gc::No,
+        sh_gc::SH_GC_PC => Gc::Pc,
+        sh_gc::SH_GC_PD => Gc::Pd,
+        sh_gc::SH_GC_PE => Gc::Pe,
+        sh_gc::SH_GC_PF => Gc::Pf,
+        sh_gc::SH_GC_PI => Gc::Pi,
+        sh_gc::SH_GC_PO => Gc::Po,
+        sh_gc::SH_GC_PS => Gc::Ps,
+        sh_gc::SH_GC_SC => Gc::Sc,
+        sh_gc::SH_GC_SK => Gc::Sk,
+        sh_gc::SH_GC_SM => Gc::Sm,
+        sh_gc::SH_GC_SO => Gc::So,
+        sh_gc::SH_GC_ZL => Gc::Zl,
+        sh_gc::SH_GC_ZP => Gc::Zp,
+        sh_gc::SH_GC_ZS => Gc::Zs,
     }
 }
 
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone)]
 #[repr(C)]
-pub enum SH_Hst {
-    SH_Hst_L,      //Leading_Jamo
-    SH_Hst_LV,     //LV_Syllable
-    SH_Hst_LVT,    //LVT_Syllable
-    SH_Hst_NA,     //Not_Applicable
-    SH_Hst_T,      //Trailing_Jamo
-    SH_Hst_V,      //Vowel_Jamo
+pub enum sh_hst {
+    SH_HST_L,      //Leading_Jamo
+    SH_HST_LV,     //LV_Syllable
+    SH_HST_LVT,    //LVT_Syllable
+    SH_HST_NA,     //Not_Applicable
+    SH_HST_T,      //Trailing_Jamo
+    SH_HST_V,      //Vowel_Jamo
 }
 
-pub fn convert_sh_hst_to_hst(hst: SH_Hst) -> Hst {
+pub fn convert_sh_hst_to_hst(hst: sh_hst) -> Hst {
     match hst {
-        SH_Hst::SH_Hst_L => Hst::L,
-        SH_Hst::SH_Hst_LV => Hst::LV,
-        SH_Hst::SH_Hst_LVT => Hst::LVT,
-        SH_Hst::SH_Hst_NA => Hst::NA,
-        SH_Hst::SH_Hst_T => Hst::T,
-        SH_Hst::SH_Hst_V => Hst::V,
+        sh_hst::SH_HST_L => Hst::L,
+        sh_hst::SH_HST_LV => Hst::LV,
+        sh_hst::SH_HST_LVT => Hst::LVT,
+        sh_hst::SH_HST_NA => Hst::NA,
+        sh_hst::SH_HST_T => Hst::T,
+        sh_hst::SH_HST_V => Hst::V,
     }
 }

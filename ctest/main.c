@@ -44,15 +44,15 @@ void test_string_print()
 void test_unicode_gc()
 {
     sh_char ch = sh_char_new("A");
-    SH_Gc gc = sh_char_gc(ch);
-    assert(gc == SH_Gc_Lu);
+    sh_gc gc = sh_char_gc(ch);
+    assert(gc == SH_GC_LU);
 }
 
 void test_unicode_gc_debug()
 {
     printf("test_unicode_gc_debug begin\n");
     sh_char ch = sh_char_new("c");
-    SH_Gc gc = sh_char_gc(ch);
+    sh_gc gc = sh_char_gc(ch);
     sh_gc_debug(gc);
     printf("test_unicode_gc_debug end\n");
     printf("=========================\n");
@@ -62,7 +62,7 @@ void test_unicode_gc_name()
 {
     printf("test_unicode_gc_name begin\n");
     sh_char ch = sh_char_new("b");
-    SH_Gc gc = sh_char_gc(ch);
+    sh_gc gc = sh_char_gc(ch);
 
     sh_property_name property_name = sh_gc_property_value_name(gc);
 
@@ -84,15 +84,15 @@ void test_unicode_gc_name()
 void test_unicode_hst()
 {
     sh_char ch = sh_char_new("ᄀ");
-    SH_Hst hst = sh_char_hst(ch);
-    assert(hst == SH_Hst_L);
+    sh_hst hst = sh_char_hst(ch);
+    assert(hst == SH_HST_L);
 }
 
 void test_unicode_hst_name()
 {
     printf("test_unicode_hst_name begin\n");
     sh_char ch = sh_char_new("ᄀ");
-    SH_Hst hst = sh_char_hst(ch);
+    sh_hst hst = sh_char_hst(ch);
 
     sh_property_name property_name = sh_hst_property_value_name(hst);
 

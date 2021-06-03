@@ -8,6 +8,7 @@ edition = "2018"
 
 [lib]
 crate-type = ["cdylib"]
+name = "seshat"
 
 [dependencies]
 seshat-unicode = "0.0.12"

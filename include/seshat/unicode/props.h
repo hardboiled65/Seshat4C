@@ -14,54 +14,54 @@ typedef struct sh_property_name {
     void *names;
 } sh_property_name;
 
-typedef enum SH_Gc {
+typedef enum sh_gc {
     // C - Other
-    SH_Gc_Cc,
-    SH_Gc_Cf,
-    SH_Gc_Cn,
-    SH_Gc_Co,
-    SH_Gc_Cs,
+    SH_GC_CC,
+    SH_GC_CF,
+    SH_GC_CN,
+    SH_GC_CO,
+    SH_GC_CS,
     // L - Letter
     // LC - Cased_Letter (Ll | Lt | Lu)
-    SH_Gc_Ll,
-    SH_Gc_Lm,
-    SH_Gc_Lo,
-    SH_Gc_Lt,
-    SH_Gc_Lu,
+    SH_GC_LL,
+    SH_GC_LM,
+    SH_GC_LO,
+    SH_GC_LT,
+    SH_GC_LU,
     // M - Mark
-    SH_Gc_Mc,
-    SH_Gc_Me,
-    SH_Gc_Mn,
+    SH_GC_MC,
+    SH_GC_ME,
+    SH_GC_MN,
     // N - Number
-    SH_Gc_Nd,
-    SH_Gc_Nl,
-    SH_Gc_No,
+    SH_GC_ND,
+    SH_GC_NL,
+    SH_GC_NO,
     // P - Punctuation
-    SH_Gc_Pc,
-    SH_Gc_Pd,
-    SH_Gc_Pe,
-    SH_Gc_Pf,
-    SH_Gc_Pi,
-    SH_Gc_Po,
-    SH_Gc_Ps,
+    SH_GC_PC,
+    SH_GC_PD,
+    SH_GC_PE,
+    SH_GC_PF,
+    SH_GC_PI,
+    SH_GC_PO,
+    SH_GC_PS,
     // S - Symbol
-    SH_Gc_Sc,
-    SH_Gc_Sk,
-    SH_Gc_Sm,
-    SH_Gc_So,
+    SH_GC_SC,
+    SH_GC_SK,
+    SH_GC_SM,
+    SH_GC_SO,
     // Z - Separator
-    SH_Gc_Zl,
-    SH_Gc_Zp,
-    SH_Gc_Zs,
-} SH_Gc;
+    SH_GC_ZL,
+    SH_GC_ZP,
+    SH_GC_ZS,
+} sh_gc;
 
-typedef enum SH_Hst {
-    SH_Hst_L,      //Leading_Jamo
-    SH_Hst_LV,     //LV_Syllable
-    SH_Hst_LVT,    //LVT_Syllable
-    SH_Hst_NA,     //Not_Applicable
-    SH_Hst_T,      //Trailing_Jamo
-    SH_Hst_V,      //Vowel_Jamo
-} SH_Hst;
+typedef enum sh_hst {
+    SH_HST_L,      //Leading_Jamo
+    SH_HST_LV,     //LV_Syllable
+    SH_HST_LVT,    //LVT_Syllable
+    SH_HST_NA,     //Not_Applicable
+    SH_HST_T,      //Trailing_Jamo
+    SH_HST_V,      //Vowel_Jamo
+} sh_hst;
 
 #endif /* _SESHAT_UNICODE_PROPS_H */

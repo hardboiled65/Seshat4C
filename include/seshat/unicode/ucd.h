@@ -18,17 +18,17 @@ sh_string* sh_property_name_full(sh_property_name property_name);
 
 sh_string* sh_property_name_abbr(sh_property_name property_name);
 
-SH_Gc sh_char_gc(sh_char ch);
+sh_gc sh_char_gc(sh_char ch);
 
-sh_property_name sh_gc_property_value_name(SH_Gc gc);
+sh_property_name sh_gc_property_value_name(sh_gc gc);
 
-SH_Hst sh_char_hst(sh_char ch);
+sh_hst sh_char_hst(sh_char ch);
 
-sh_property_name sh_hst_property_value_name(SH_Hst hst);
+sh_property_name sh_hst_property_value_name(sh_hst hst);
 
 sh_string* sh_char_na(sh_char ch);
 
 
-void sh_gc_debug(SH_Gc gc);
+void sh_gc_debug(sh_gc gc);
 
 #endif /* _SESHAT_UNICODE_UCD_H */
