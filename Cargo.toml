@@ -3,6 +3,7 @@ name = "seshat4c"
 version = "0.0.12"
 authors = ["Yujeonja <hardboiled65@gmail.com>"]
 edition = "2018"
+license = "MIT"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
