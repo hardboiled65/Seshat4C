@@ -1,6 +1,6 @@
 [package]
 name = "seshat4c"
-version = "0.0.11"
+version = "0.0.12"
 authors = ["Yujeonja <hardboiled65@gmail.com>"]
 edition = "2018"
 
@@ -10,4 +10,4 @@ edition = "2018"
 crate-type = ["cdylib"]
 
 [dependencies]
-seshat-unicode = "0.0.11"
+seshat-unicode = "0.0.12"
