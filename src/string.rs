@@ -5,7 +5,7 @@ use super::char::*;
 
 #[repr(C)]
 pub struct sh_string {
-    content: String,
+    pub content: String,
 }
 
 #[no_mangle]
@@ -50,11 +50,17 @@ pub extern "C" fn sh_string_len(string: *mut sh_string) -> usize {
 }
 
 #[no_mangle]
+pub extern "C" fn sh_string_eq(string: *const sh_string, other: *const sh_string) -> bool {
+    unsafe { (*string).content == (*other).content }
+}
+
+#[no_mangle]
 pub extern "C" fn sh_string_print(string: *mut sh_string) {
     let boxed = unsafe { Box::from_raw(string) };
     println!("{}", boxed.content);
     Box::into_raw(boxed);
 }
+
 
 #[cfg(test)]
 mod tests {

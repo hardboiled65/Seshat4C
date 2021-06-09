@@ -1,5 +1,5 @@
 default:
-	$(CC) -I../include -L../target/debug -lseshat main.c -o test
+	$(CC) main.c segmentation.c -I../include -L../target/debug -lseshat -o test
 
 run:
 	LD_LIBRARY_PATH=../target/debug ./test

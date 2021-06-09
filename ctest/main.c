@@ -5,6 +5,8 @@
 
 #include <seshat.h>
 
+#include "segmentation.h"
+
 void test_char_as_uint32_t()
 {
     sh_char ch = sh_char_new("A");
@@ -143,6 +145,9 @@ int main()
     test_unicode_hst_name();
 
     test_unicode_na();
+
+    // Test segmentation.
+    test_segmentation();
 
     return 0;
 }

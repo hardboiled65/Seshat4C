@@ -10,6 +10,7 @@
 #ifndef _SESHAT_STRING_H
 #define _SESHAT_STRING_H
 
+#include <stdbool.h>
 #include <stddef.h>
 
 #include "char.h"
@@ -25,6 +26,8 @@ void sh_string_insert(sh_string *string, size_t idx, sh_char ch);
 size_t sh_string_len(sh_string *string);
 
 void sh_string_free(sh_string *string);
+
+bool sh_string_eq(sh_string *string, sh_string *other);
 
 void sh_string_print(const sh_string *string);
 
