@@ -61,6 +61,12 @@ pub extern "C" fn sh_string_print(string: *mut sh_string) {
     Box::into_raw(boxed);
 }
 
+#[no_mangle]
+pub extern "C" fn sh_string_c_str(string: *const sh_string) -> *const c_char {
+    let raw = unsafe { (*string).content.as_ptr() };
+    raw as *const c_char
+}
+
 
 #[cfg(test)]
 mod tests {

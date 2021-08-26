@@ -1,5 +1,6 @@
 #include <assert.h>
 #include <stddef.h>
+#include <string.h>
 
 #include <stdio.h>
 
@@ -37,6 +38,15 @@ void test_string_print()
 {
     sh_string *string = sh_string_new("Foo bar");
     sh_string_print(string);
+
+    sh_string_free(string);
+}
+
+void test_string_c_str()
+{
+    sh_string *string = sh_string_new("Compare with strcmp");
+    const char *c_str = sh_string_c_str(string);
+    assert(strcmp("Compare with strcmp", c_str) == 0);
 
     sh_string_free(string);
 }
@@ -131,6 +141,8 @@ int main()
     test_string_len();
 
     test_string_print();
+
+    test_string_c_str();
 
     // Unicode tests.
 

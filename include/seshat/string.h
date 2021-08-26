@@ -31,4 +31,6 @@ bool sh_string_eq(sh_string *string, sh_string *other);
 
 void sh_string_print(const sh_string *string);
 
+const char* sh_string_c_str(const sh_string *string);
+
 #endif /* _SESHAT_STRING_H */
