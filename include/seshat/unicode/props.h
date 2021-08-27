@@ -14,7 +14,7 @@ typedef struct sh_property_name {
     void *names;
 } sh_property_name;
 
-typedef enum sh_gc_t {
+typedef enum sh_gc {
     // C - Other
     SH_GC_CC,
     SH_GC_CF,
@@ -53,15 +53,15 @@ typedef enum sh_gc_t {
     SH_GC_ZL,
     SH_GC_ZP,
     SH_GC_ZS,
-} sh_gc_t;
+} sh_gc;
 
-typedef enum sh_hst_t {
+typedef enum sh_hst {
     SH_HST_L,      //Leading_Jamo
     SH_HST_LV,     //LV_Syllable
     SH_HST_LVT,    //LVT_Syllable
     SH_HST_NA,     //Not_Applicable
     SH_HST_T,      //Trailing_Jamo
     SH_HST_V,      //Vowel_Jamo
-} sh_hst_t;
+} sh_hst;
 
 #endif /* _SESHAT_UNICODE_PROPS_H */
