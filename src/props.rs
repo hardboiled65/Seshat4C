@@ -1,4 +1,73 @@
+use std::ffi::CString;
+
 use seshat::unicode::props::*;
+use crate::string::*;
+
+#[repr(C)]
+pub struct sh_property_name {
+    names: Box<PropertyName>,
+}
+
+#[no_mangle]
+pub extern "C" fn sh_property_name_full(property_name: sh_property_name) -> *mut sh_string {
+    let names: PropertyName = *property_name.names;
+    let string = CString::new(names.full.as_bytes());
+    let string = match string {
+        Ok(valid) => valid,
+        Err(e) => {
+            panic!("{:?}", e);
+        }
+    };
+
+    Box::into_raw(property_name.names);
+
+    let property_name = sh_string_new(string.into_raw());
+
+    property_name
+}
+
+#[no_mangle]
+pub extern "C" fn sh_property_name_abbr(property_name: sh_property_name) -> *mut sh_string {
+    let names: PropertyName = *property_name.names;
+    let string = CString::new(names.abbr.as_bytes());
+    let string = match string {
+        Ok(valid) => valid,
+        Err(e) => {
+            panic!("{:?}", e);
+        }
+    };
+
+    Box::into_raw(property_name.names);
+
+    let name = sh_string_new(string.into_raw());
+
+    name
+}
+
+#[allow(non_camel_case_types)]
+#[derive(Debug, Clone)]
+#[repr(C)]
+pub enum sh_binary_property {
+    SH_BINARY_PROPERTY_Y = BinaryProperty::Y as isize,
+    SH_BINARY_PROPERTY_N = BinaryProperty::N as isize,
+}
+
+pub fn convert_sh_binary_property_to_binary_property(prop: sh_binary_property) -> BinaryProperty {
+    match prop {
+        sh_binary_property::SH_BINARY_PROPERTY_Y => BinaryProperty::Y,
+        sh_binary_property::SH_BINARY_PROPERTY_N => BinaryProperty::N,
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn sh_binary_property_property_value_name(prop: sh_binary_property) -> sh_property_name {
+    let seshat_binary_property = convert_sh_binary_property_to_binary_property(prop);
+    let name = sh_property_name {
+        names: Box::new(seshat_binary_property.property_value_name()),
+    };
+
+    name
+}
 
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone)]
@@ -79,6 +148,16 @@ pub fn convert_sh_gc_to_gc(gc: sh_gc) -> Gc {
     }
 }
 
+#[no_mangle]
+pub extern "C" fn sh_gc_property_value_name(gc: sh_gc) -> sh_property_name {
+    let seshat_gc = convert_sh_gc_to_gc(gc);
+    let name = sh_property_name {
+        names: Box::new(seshat_gc.property_value_name()),
+    };
+
+    name
+}
+
 #[allow(non_camel_case_types)]
 #[derive(Debug, Clone)]
 #[repr(C)]
@@ -100,4 +179,14 @@ pub fn convert_sh_hst_to_hst(hst: sh_hst) -> Hst {
         sh_hst::SH_HST_T => Hst::T,
         sh_hst::SH_HST_V => Hst::V,
     }
+}
+
+#[no_mangle]
+pub extern "C" fn sh_hst_property_value_name(hst: sh_hst) -> sh_property_name {
+    let seshat_hst = convert_sh_hst_to_hst(hst);
+    let name = sh_property_name {
+        names: Box::new(seshat_hst.property_value_name()),
+    };
+
+    name
 }

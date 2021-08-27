@@ -20,11 +20,7 @@ sh_string* sh_property_name_abbr(sh_property_name property_name);
 
 sh_gc sh_char_gc(sh_char ch);
 
-sh_property_name sh_gc_property_value_name(sh_gc gc);
-
 sh_hst sh_char_hst(sh_char ch);
-
-sh_property_name sh_hst_property_value_name(sh_hst hst);
 
 sh_string* sh_char_na(sh_char ch);
 

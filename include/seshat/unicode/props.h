@@ -55,6 +55,8 @@ typedef enum sh_gc {
     SH_GC_ZS,
 } sh_gc;
 
+sh_property_name sh_gc_property_value_name(sh_gc gc);
+
 typedef enum sh_hst {
     SH_HST_L,      //Leading_Jamo
     SH_HST_LV,     //LV_Syllable
@@ -63,5 +65,7 @@ typedef enum sh_hst {
     SH_HST_T,      //Trailing_Jamo
     SH_HST_V,      //Vowel_Jamo
 } sh_hst;
+
+sh_property_name sh_hst_property_value_name(sh_hst hst);
 
 #endif /* _SESHAT_UNICODE_PROPS_H */

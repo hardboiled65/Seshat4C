@@ -1,53 +1,11 @@
 use std::ffi::CString;
 
-use seshat::unicode::props::*;
 use seshat::unicode::Ucd;
 
 use super::char::*;
 use super::string::sh_string;
 use super::string::sh_string_new;
 use crate::props::*;
-
-#[repr(C)]
-pub struct sh_property_name {
-    names: Box<PropertyName>,
-}
-
-#[no_mangle]
-pub extern "C" fn sh_property_name_full(property_name: sh_property_name) -> *mut sh_string {
-    let names: PropertyName = *property_name.names;
-    let string = CString::new(names.full.as_bytes());
-    let string = match string {
-        Ok(valid) => valid,
-        Err(e) => {
-            panic!("{:?}", e);
-        }
-    };
-
-    Box::into_raw(property_name.names);
-
-    let property_name = sh_string_new(string.into_raw());
-
-    property_name
-}
-
-#[no_mangle]
-pub extern "C" fn sh_property_name_abbr(property_name: sh_property_name) -> *mut sh_string {
-    let names: PropertyName = *property_name.names;
-    let string = CString::new(names.abbr.as_bytes());
-    let string = match string {
-        Ok(valid) => valid,
-        Err(e) => {
-            panic!("{:?}", e);
-        }
-    };
-
-    Box::into_raw(property_name.names);
-
-    let name = sh_string_new(string.into_raw());
-
-    name
-}
 
 #[no_mangle]
 pub extern "C" fn sh_char_gc(ch: sh_char) -> isize {
@@ -57,30 +15,10 @@ pub extern "C" fn sh_char_gc(ch: sh_char) -> isize {
 }
 
 #[no_mangle]
-pub extern "C" fn sh_gc_property_value_name(gc: sh_gc) -> sh_property_name {
-    let seshat_gc = convert_sh_gc_to_gc(gc);
-    let name = sh_property_name {
-        names: Box::new(seshat_gc.property_value_name()),
-    };
-
-    name
-}
-
-#[no_mangle]
 pub extern "C" fn sh_char_hst(ch: sh_char) -> isize {
     let ch = sh_char_to_rust_char(&ch);
 
     ch.hst() as isize
-}
-
-#[no_mangle]
-pub extern "C" fn sh_hst_property_value_name(hst: sh_hst) -> sh_property_name {
-    let seshat_hst = convert_sh_hst_to_hst(hst);
-    let name = sh_property_name {
-        names: Box::new(seshat_hst.property_value_name()),
-    };
-
-    name
 }
 
 #[no_mangle]
