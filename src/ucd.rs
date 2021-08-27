@@ -57,7 +57,7 @@ pub extern "C" fn sh_char_gc(ch: sh_char) -> isize {
 }
 
 #[no_mangle]
-pub extern "C" fn sh_gc_property_value_name(gc: sh_gc) -> sh_property_name {
+pub extern "C" fn sh_gc_property_value_name(gc: sh_gc_t) -> sh_property_name {
     let seshat_gc = convert_sh_gc_to_gc(gc);
     let name = sh_property_name {
         names: Box::new(seshat_gc.property_value_name()),
@@ -74,7 +74,7 @@ pub extern "C" fn sh_char_hst(ch: sh_char) -> isize {
 }
 
 #[no_mangle]
-pub extern "C" fn sh_hst_property_value_name(hst: sh_hst) -> sh_property_name {
+pub extern "C" fn sh_hst_property_value_name(hst: sh_hst_t) -> sh_property_name {
     let seshat_hst = convert_sh_hst_to_hst(hst);
     let name = sh_property_name {
         names: Box::new(seshat_hst.property_value_name()),
@@ -100,7 +100,7 @@ pub extern "C" fn sh_char_na(ch: sh_char) -> *mut sh_string {
 }
 
 #[no_mangle]
-pub extern "C" fn sh_gc_debug(gc: sh_gc) {
+pub extern "C" fn sh_gc_debug(gc: sh_gc_t) {
     println!("Gc: {:?}", gc);
 }
 
