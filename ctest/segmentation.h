@@ -1,4 +1,4 @@
-#include <seshat.h>
+#include <seshat/seshat.h>
 
 void test_break_graphemes();
 

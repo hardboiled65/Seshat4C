@@ -4,7 +4,7 @@
 
 #include <stdio.h>
 
-#include <seshat.h>
+#include <seshat/seshat.h>
 
 #include "segmentation.h"
 

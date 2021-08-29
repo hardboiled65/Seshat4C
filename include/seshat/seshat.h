@@ -7,11 +7,11 @@
 //
 //  Seshat main header.
 */
-#ifndef _SESHAT_H
-#define _SESHAT_H
+#ifndef _SESHAT_SESHAT_H
+#define _SESHAT_SESHAT_H
 
-#include "seshat/char.h"
-#include "seshat/string.h"
-#include "seshat/unicode.h"
+#include "char.h"
+#include "string.h"
+#include "unicode.h"
 
-#endif /* _SESHAT_H */
+#endif /* _SESHAT_SESHAT_H */
