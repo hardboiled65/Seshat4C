@@ -31,8 +31,7 @@ pub extern "C" fn sh_string_new(c_str: *const c_char) -> *mut sh_string {
 
 #[no_mangle]
 pub extern "C" fn sh_string_free(string: *mut sh_string) {
-    let boxed = unsafe { Box::from_raw(string) };
-    Box::into_raw(boxed);
+    unsafe { Box::from_raw(string) };
 }
 
 #[no_mangle]
