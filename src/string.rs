@@ -1,4 +1,4 @@
-use std::ffi::CStr;
+use std::ffi::{CStr, CString};
 use std::os::raw::c_char;
 
 use super::char::*;
@@ -6,6 +6,7 @@ use super::char::*;
 #[repr(C)]
 pub struct sh_string {
     pub content: String,
+    pub c_string: CString,
 }
 
 #[no_mangle]
@@ -22,6 +23,7 @@ pub extern "C" fn sh_string_new(c_str: *const c_char) -> *mut sh_string {
     let rust_string: String = rust_str.to_owned();
     let s = Box::new(sh_string {
         content: rust_string,
+        c_string: CString::new(rust_str).unwrap(),
     });
 
     Box::into_raw(s)
@@ -37,6 +39,7 @@ pub extern "C" fn sh_string_free(string: *mut sh_string) {
 pub extern "C" fn sh_string_insert(string: *mut sh_string, idx: usize, ch: sh_char) {
     let mut boxed = unsafe { Box::from_raw(string) };
     boxed.content.insert(idx, sh_char_to_rust_char(&ch));
+    boxed.c_string = CString::new(boxed.content.as_bytes()).unwrap();
     Box::into_raw(boxed);
 }
 
@@ -63,8 +66,7 @@ pub extern "C" fn sh_string_print(string: *mut sh_string) {
 
 #[no_mangle]
 pub extern "C" fn sh_string_c_str(string: *const sh_string) -> *const c_char {
-    let raw = unsafe { (*string).content.as_ptr() };
-    raw as *const c_char
+    unsafe { (*string).c_string.as_ptr() }
 }
 
 

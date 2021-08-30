@@ -8,11 +8,24 @@
 
 #include "segmentation.h"
 
+void test_char_new()
+{
+    sh_char char_0x0 = sh_char_new("\0");
+}
+
 void test_char_as_uint32_t()
 {
     sh_char ch = sh_char_new("A");
     uint32_t u32 = sh_char_as_uint32_t(ch);
     assert(u32 == 0x41);
+
+    sh_char ch_0x0 = sh_char_new("\0");
+    uint32_t u32_0x0 = sh_char_as_uint32_t(ch_0x0);
+    assert(u32_0x0 == 0x0);
+
+    sh_char ch_0x1 = sh_char_new("\x01");
+    uint32_t u32_0x1 = sh_char_as_uint32_t(ch_0x1);
+    assert(u32_0x1 == 0x1);
 }
 
 void test_string_insert()
@@ -125,15 +138,27 @@ void test_unicode_hst_name()
 
 void test_unicode_na()
 {
-    sh_char ch = sh_char_new("가");
-    sh_string *na = sh_char_na(ch);
-    sh_string_print(na);
+    // Hangul Syllable Ga.
+    sh_char ch_ga = sh_char_new("가");
+    sh_string *na_ga = sh_char_na(ch_ga);
+    sh_string_print(na_ga);
+    assert(strcmp(sh_string_c_str(na_ga), "HANGUL SYLLABLE GA") == 0);
 
-    sh_string_free(na);
+    sh_string_free(na_ga);
+
+    // None.
+    sh_char ch_0x0 = sh_char_new("\0");
+    sh_string *na_0x0 = sh_char_na(ch_0x0);
+    printf("[%s]\n", sh_string_c_str(na_0x0));
+    assert(strcmp(sh_string_c_str(na_0x0), "") == 0);
+
+    sh_string_free(na_0x0);
 }
 
 int main()
 {
+    test_char_new();
+
     test_char_as_uint32_t();
 
     test_string_insert();

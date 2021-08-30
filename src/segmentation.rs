@@ -1,4 +1,4 @@
-// use std::ffi::CString;
+use std::ffi::CString;
 
 use seshat::unicode::Segmentation;
 use seshat::unicode::BreakGraphemes;
@@ -22,12 +22,14 @@ pub extern "C" fn sh_break_graphemes_next(iter: *mut sh_break_graphemes) -> *mut
     let mut boxed = unsafe { Box::from_raw(iter) };
     let mut string: Box<sh_string> = Box::new(sh_string {
         content: String::new(),
+        c_string: CString::new("").unwrap(),
     });
     let mut is_none = false;
 
     match boxed.iter.next() {
         Some(val) => {
             string.content = val.to_string();
+            string.c_string = CString::new(val).unwrap();
         },
         None => {
             is_none = true;
