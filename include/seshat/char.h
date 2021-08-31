@@ -13,7 +13,7 @@
 #include <stdint.h>
 
 typedef struct sh_char {
-    uint32_t ch;
+    uint32_t cp;
 } sh_char;
 
 sh_char sh_char_new(const char*);
