@@ -12,3 +12,12 @@ Build
 $ cargo build
 $ ./post-script.sh
 ```
+
+Test
+----
+
+```sh
+$ cd ctest
+$ make
+$ make run
+```
