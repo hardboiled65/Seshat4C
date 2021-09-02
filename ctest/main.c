@@ -155,6 +155,13 @@ void test_unicode_na()
     sh_string_free(na_0x0);
 }
 
+void test_unicode_ahex()
+{
+    sh_char ch_f = sh_char_new("F");
+    bool ahex_f = sh_char_ahex(ch_f);
+    assert(ahex_f == true);
+}
+
 int main()
 {
     test_char_new();
@@ -182,6 +189,8 @@ int main()
     test_unicode_hst_name();
 
     test_unicode_na();
+
+    test_unicode_ahex();
 
     // Test segmentation.
     test_segmentation();

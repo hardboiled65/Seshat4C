@@ -10,6 +10,8 @@
 #ifndef _SESHAT_UNICODE_UCD_H
 #define _SESHAT_UNICODE_UCD_H
 
+#include <stdbool.h>
+
 #include "../char.h"
 #include "../string.h"
 #include "props.h"
@@ -24,7 +26,11 @@ sh_hst sh_char_hst(sh_char ch);
 
 sh_string* sh_char_na(sh_char ch);
 
-
 void sh_gc_debug(sh_gc gc);
+
+/*===================*/
+/* Binary properties */
+/*===================*/
+bool sh_char_ahex(sh_char ch);
 
 #endif /* _SESHAT_UNICODE_UCD_H */

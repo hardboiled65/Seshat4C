@@ -42,6 +42,14 @@ pub extern "C" fn sh_gc_debug(gc: sh_gc) {
     println!("Gc: {:?}", gc);
 }
 
+#[no_mangle]
+pub extern "C" fn sh_char_ahex(ch: sh_char) -> bool {
+    let ch = sh_char_to_rust_char(&ch);
+    let ahex = ch.ahex();
+
+    ahex
+}
+
 #[cfg(test)]
 mod tests {
     use std::ffi::CStr;
