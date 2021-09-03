@@ -162,6 +162,13 @@ void test_unicode_ahex()
     assert(ahex_f == true);
 }
 
+void test_unicode_alpha()
+{
+    sh_char ch_a = sh_char_new("a");
+    bool alpha_a = sh_char_alpha(ch_a);
+    assert(alpha_a == true);
+}
+
 int main()
 {
     test_char_new();
@@ -191,6 +198,8 @@ int main()
     test_unicode_na();
 
     test_unicode_ahex();
+
+    test_unicode_alpha();
 
     // Test segmentation.
     test_segmentation();

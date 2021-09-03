@@ -50,6 +50,14 @@ pub extern "C" fn sh_char_ahex(ch: sh_char) -> bool {
     ahex
 }
 
+#[no_mangle]
+pub extern "C" fn sh_char_alpha(ch: sh_char) -> bool {
+    let ch = sh_char_to_rust_char(&ch);
+    let alpha = ch.alpha();
+
+    alpha
+}
+
 #[cfg(test)]
 mod tests {
     use std::ffi::CStr;
