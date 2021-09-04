@@ -169,6 +169,13 @@ void test_unicode_alpha()
     assert(alpha_a == true);
 }
 
+void test_unicode_bidi_c()
+{
+    sh_char ch = sh_char_new("\u202D");
+    bool bidi_c = sh_char_bidi_c(ch);
+    assert(bidi_c == true);
+}
+
 int main()
 {
     test_char_new();
@@ -200,6 +207,8 @@ int main()
     test_unicode_ahex();
 
     test_unicode_alpha();
+
+    test_unicode_bidi_c();
 
     // Test segmentation.
     test_segmentation();

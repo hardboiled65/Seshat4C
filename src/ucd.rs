@@ -58,6 +58,14 @@ pub extern "C" fn sh_char_alpha(ch: sh_char) -> bool {
     alpha
 }
 
+#[no_mangle]
+pub extern "C" fn sh_char_bidi_c(ch: sh_char) -> bool {
+    let ch = sh_char_to_rust_char(&ch);
+    let bidi_c = ch.bidi_c();
+
+    bidi_c
+}
+
 #[cfg(test)]
 mod tests {
     use std::ffi::CStr;

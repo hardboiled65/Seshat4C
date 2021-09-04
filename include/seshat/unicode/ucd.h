@@ -35,4 +35,6 @@ bool sh_char_ahex(sh_char ch);
 
 bool sh_char_alpha(sh_char ch);
 
+bool sh_char_bidi_c(sh_char ch);
+
 #endif /* _SESHAT_UNICODE_UCD_H */
