@@ -32,6 +32,19 @@ pub extern "C" fn sh_char_new(c_str: *const c_char) -> sh_char
 }
 
 #[no_mangle]
+pub extern "C" fn sh_char_from_u32(cp: u32) -> sh_char {
+    if cp > 0x10FFFF {
+        return sh_char {
+            cp: 0,
+        };
+    }
+
+    sh_char {
+        cp: cp,
+    }
+}
+
+#[no_mangle]
 pub extern "C" fn sh_char_as_uint32_t(ch: sh_char) -> u32 {
     ch.cp as u32
 }

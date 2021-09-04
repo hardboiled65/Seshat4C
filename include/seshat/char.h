@@ -18,6 +18,8 @@ typedef struct sh_char {
 
 sh_char sh_char_new(const char*);
 
+sh_char sh_char_from_u32(uint32_t cp);
+
 uint32_t sh_char_as_uint32_t(sh_char ch);
 
 #endif /* _SESHAT_CHAR_H */
