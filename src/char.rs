@@ -1,5 +1,7 @@
-use std::ffi::CStr;
+use std::ffi::{CStr, CString};
 use std::os::raw::c_char;
+
+use super::string::*;
 
 #[repr(C)]
 pub struct sh_char {
@@ -60,6 +62,17 @@ pub extern "C" fn sh_char_from_uint32_t(cp: u32) -> sh_char {
 #[no_mangle]
 pub extern "C" fn sh_char_as_uint32_t(ch: sh_char) -> u32 {
     ch.cp as u32
+}
+
+#[no_mangle]
+pub extern "C" fn sh_char_to_string(ch: sh_char) -> *mut sh_string {
+    let rust_char = sh_char_to_rust_char(&ch);
+    let s = Box::new(sh_string {
+        content: rust_char.to_string(),
+        c_string: CString::new(rust_char.to_string()).unwrap(),
+    });
+
+    Box::into_raw(s)
 }
 
 pub fn sh_char_to_rust_char(ch: &sh_char) -> char {

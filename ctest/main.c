@@ -28,6 +28,14 @@ void test_char_as_uint32_t()
     assert(u32_0x1 == 0x1);
 }
 
+void test_char_to_string()
+{
+    sh_char ch_hoshi = sh_char_new("星");
+    sh_string *str_hoshi = sh_char_to_string(ch_hoshi);
+    assert(strcmp(sh_string_c_str(str_hoshi), "星") == 0);
+    sh_string_free(str_hoshi);
+}
+
 void test_string_insert()
 {
     sh_string *string = sh_string_new("insert tes");
@@ -181,6 +189,8 @@ int main()
     test_char_new();
 
     test_char_as_uint32_t();
+
+    test_char_to_string();
 
     test_string_insert();
 
