@@ -66,6 +66,14 @@ pub extern "C" fn sh_char_bidi_c(ch: sh_char) -> bool {
     bidi_c
 }
 
+#[no_mangle]
+pub extern "C" fn sh_char_cased(ch: sh_char) -> bool {
+    let ch = sh_char_to_rust_char(&ch);
+    let cased = ch.cased();
+
+    cased
+}
+
 #[cfg(test)]
 mod tests {
     use std::ffi::CStr;

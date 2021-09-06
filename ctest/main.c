@@ -184,6 +184,13 @@ void test_unicode_bidi_c()
     assert(bidi_c == true);
 }
 
+void test_unicode_cased()
+{
+    sh_char ch_s = sh_char_new("S");
+    bool cased_s = sh_char_cased(ch_s);
+    assert(cased_s == true);
+}
+
 int main()
 {
     test_char_new();
@@ -219,6 +226,8 @@ int main()
     test_unicode_alpha();
 
     test_unicode_bidi_c();
+
+    test_unicode_cased();
 
     // Test segmentation.
     test_segmentation();

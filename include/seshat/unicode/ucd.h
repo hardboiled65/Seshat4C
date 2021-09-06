@@ -37,4 +37,8 @@ bool sh_char_alpha(sh_char ch);
 
 bool sh_char_bidi_c(sh_char ch);
 
+// bool sh_char_bidi_m(sh_char ch);
+
+bool sh_char_cased(sh_char ch);
+
 #endif /* _SESHAT_UNICODE_UCD_H */
