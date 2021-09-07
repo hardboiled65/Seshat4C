@@ -74,6 +74,14 @@ pub extern "C" fn sh_char_cased(ch: sh_char) -> bool {
     cased
 }
 
+#[no_mangle]
+pub extern "C" fn sh_char_ce(ch: sh_char) -> bool {
+    let ch = sh_char_to_rust_char(&ch);
+    let ce = ch.ce();
+
+    ce
+}
+
 #[cfg(test)]
 mod tests {
     use std::ffi::CStr;

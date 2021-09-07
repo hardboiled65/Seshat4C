@@ -191,6 +191,13 @@ void test_unicode_cased()
     assert(cased_s == true);
 }
 
+void test_unicode_ce()
+{
+    sh_char ch_qa = sh_char_new("क़");
+    bool ce_qa = sh_char_ce(ch_qa);
+    assert(ce_qa == true);
+}
+
 int main()
 {
     test_char_new();
@@ -228,6 +235,8 @@ int main()
     test_unicode_bidi_c();
 
     test_unicode_cased();
+
+    test_unicode_ce();
 
     // Test segmentation.
     test_segmentation();
