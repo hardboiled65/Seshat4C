@@ -198,6 +198,13 @@ void test_unicode_ce()
     assert(ce_qa == true);
 }
 
+void test_unicode_ci()
+{
+    sh_char ch_colon = sh_char_new(":");
+    bool ci_colon = sh_char_ci(ch_colon);
+    assert(ci_colon == true);
+}
+
 int main()
 {
     test_char_new();
@@ -237,6 +244,8 @@ int main()
     test_unicode_cased();
 
     test_unicode_ce();
+
+    test_unicode_ci();
 
     // Test segmentation.
     test_segmentation();
