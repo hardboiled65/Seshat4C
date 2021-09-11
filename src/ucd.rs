@@ -90,6 +90,14 @@ pub extern "C" fn sh_char_ci(ch: sh_char) -> bool {
     ci
 }
 
+#[no_mangle]
+pub extern "C" fn sh_char_comp_ex(ch: sh_char) -> bool {
+    let ch = sh_char_to_rust_char(&ch);
+    let comp_ex = ch.comp_ex();
+
+    comp_ex
+}
+
 #[cfg(test)]
 mod tests {
     use std::ffi::CStr;

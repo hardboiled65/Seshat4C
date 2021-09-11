@@ -205,6 +205,13 @@ void test_unicode_ci()
     assert(ci_colon == true);
 }
 
+void test_unicode_comp_ex()
+{
+    sh_char ch_gha = sh_char_new("གྷ");
+    bool comp_ex_gha = sh_char_comp_ex(ch_gha);
+    assert(comp_ex_gha == true);
+}
+
 int main()
 {
     test_char_new();
@@ -246,6 +253,8 @@ int main()
     test_unicode_ce();
 
     test_unicode_ci();
+
+    test_unicode_comp_ex();
 
     // Test segmentation.
     test_segmentation();
