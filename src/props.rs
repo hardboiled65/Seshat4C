@@ -52,6 +52,14 @@ pub enum sh_binary_property {
     SH_BINARY_PROPERTY_N = BinaryProperty::N as isize,
 }
 
+#[no_mangle]
+pub extern "C" fn sh_binary_property_from(val: bool) -> sh_binary_property {
+    match val {
+        true => { return sh_binary_property::SH_BINARY_PROPERTY_Y; }
+        false => { return sh_binary_property::SH_BINARY_PROPERTY_N; }
+    }
+}
+
 pub fn convert_sh_binary_property_to_binary_property(prop: sh_binary_property) -> BinaryProperty {
     match prop {
         sh_binary_property::SH_BINARY_PROPERTY_Y => BinaryProperty::Y,

@@ -14,6 +14,15 @@ typedef struct sh_property_name {
     void *names;
 } sh_property_name;
 
+typedef enum sh_binary_property {
+    SH_BINARY_PROPERTY_Y,
+    SH_BINARY_PROPERTY_N,
+} sh_binary_property;
+
+sh_binary_property sh_binary_property_from(bool val);
+
+sh_property_name sh_binary_property_property_value_name(sh_binary_property);
+
 typedef enum sh_gc {
     // C - Other
     SH_GC_CC,

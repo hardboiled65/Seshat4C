@@ -72,6 +72,18 @@ void test_string_c_str()
     sh_string_free(string);
 }
 
+void test_binary_property()
+{
+    sh_char ch_f = sh_char_new("F");
+    bool ahex_f = sh_char_ahex(ch_f);
+    sh_binary_property binary_property = sh_binary_property_from(ahex_f);
+    assert(binary_property == SH_BINARY_PROPERTY_Y);
+    sh_property_name property_name = sh_binary_property_property_value_name(
+        binary_property);
+    sh_string *property_name_full = sh_property_name_full(property_name);
+    assert(strcmp(sh_string_c_str(property_name_full), "Yes") == 0);
+}
+
 // Unicode tests.
 
 void test_unicode_gc()
@@ -227,6 +239,8 @@ int main()
     test_string_print();
 
     test_string_c_str();
+
+    test_binary_property();
 
     // Unicode tests.
 
