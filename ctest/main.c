@@ -224,6 +224,13 @@ void test_unicode_comp_ex()
     assert(comp_ex_gha == true);
 }
 
+void test_unicode_dash()
+{
+    sh_char ch_minus = sh_char_new("-");
+    bool dash_minus = sh_char_dash(ch_minus);
+    assert(dash_minus == true);
+}
+
 int main()
 {
     test_char_new();
@@ -269,6 +276,8 @@ int main()
     test_unicode_ci();
 
     test_unicode_comp_ex();
+
+    test_unicode_dash();
 
     // Test segmentation.
     test_segmentation();
