@@ -106,6 +106,14 @@ pub extern "C" fn sh_char_dash(ch: sh_char) -> bool {
     dash
 }
 
+#[no_mangle]
+pub extern "C" fn sh_char_dep(ch: sh_char) -> bool {
+    let ch = sh_char_to_rust_char(&ch);
+    let dep = ch.dep();
+
+    dep
+}
+
 #[cfg(test)]
 mod tests {
     use std::ffi::CStr;

@@ -231,6 +231,13 @@ void test_unicode_dash()
     assert(dash_minus == true);
 }
 
+void test_unicode_dep()
+{
+    sh_char ch_n = sh_char_new("ŉ");
+    bool dep_n = sh_char_dep(ch_n);
+    assert(dep_n == true);
+}
+
 int main()
 {
     test_char_new();
@@ -278,6 +285,8 @@ int main()
     test_unicode_comp_ex();
 
     test_unicode_dash();
+
+    test_unicode_dep();
 
     // Test segmentation.
     test_segmentation();

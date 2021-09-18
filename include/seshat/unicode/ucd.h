@@ -49,4 +49,6 @@ bool sh_char_comp_ex(sh_char ch);
 
 bool sh_char_dash(sh_char ch);
 
+bool sh_char_dep(sh_char ch);
+
 #endif /* _SESHAT_UNICODE_UCD_H */
