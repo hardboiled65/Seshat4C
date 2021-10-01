@@ -13,5 +13,6 @@
 #include "unicode/props.h"
 #include "unicode/ucd.h"
 #include "unicode/segmentation.h"
+#include "unicode/normalization.h"
 
 #endif /* _SESHAT_UNICODE_H */

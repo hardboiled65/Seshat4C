@@ -8,6 +8,7 @@
 
 #include "properties.h"
 #include "segmentation.h"
+#include "normalization.h"
 
 void test_char_new()
 {
@@ -109,6 +110,9 @@ int main()
 
     // Test segmentation.
     test_segmentation();
+
+    // Test normalization.
+    test_normalization();
 
     return 0;
 }

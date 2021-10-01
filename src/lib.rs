@@ -4,3 +4,4 @@ pub mod string;
 pub mod ucd;
 pub mod props;
 pub mod segmentation;
+pub mod normalization;
