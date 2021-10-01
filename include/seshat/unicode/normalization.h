@@ -11,6 +11,11 @@
 #define _SESHAT_UNICODE_NORMALIZATION_H
 
 sh_string* sh_string_to_nfd(sh_string *string);
+
 sh_string* sh_string_to_nfkd(sh_string *string);
+
+sh_string* sh_string_to_nfc(sh_string *string);
+
+sh_string* sh_string_to_nfkc(sh_string *string);
 
 #endif /* _SESHAT_UNICODE_NORMALIZATION_H */
